@@ -1,0 +1,123 @@
+#main-header {
+    color: white;
+    height: 55px;
+    margin-top: -1%;
+    margin-left: 100%;
+    margin-right: 30%;
+  }
+  #main-header a {
+    color: white;
+  }
+  
+  nav {
+    float:right;
+  }
+  nav ul {
+    margin: 0;
+    padding: 15px;
+    list-style: none;
+    padding-right: 150px;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    line-height: 50px;
+  }
+  .imagenes{
+    margin: auto;
+    display: block;
+  }
+  .vista {
+    width: 100px;
+    height: 50px;
+    display:inline-block;
+    padding: -10px;
+    cursor: pointer;
+    border-radius: 10%;
+    transition: all 0.4s;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.849));
+    margin-left: 38%;
+  }
+  .vista1 {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.849));
+    margin-left: -1550%;
+  }
+  .vista2 {
+    width: 100px;
+    height: 50px;
+    display:inline-block;
+    padding: -10px;
+    cursor: pointer;
+    border-radius: 10%;
+    transition: all 0.4s;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.849));
+    margin-left: 69%;
+  }
+  .vista3 {
+    width: 100px;
+    height: 50px;
+    display:inline-block;
+    padding: -10px;
+    cursor: pointer;
+    border-radius: 10%;
+    transition: all 0.4s;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.849));
+    margin-left: 100%;
+  }
+  
+  .soli {
+    text-align: center;
+    color: #1f4037;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 0%;
+    margin-top: -8%;
+    font-size: 30px;
+    padding: 10.5%;
+    -webkit-text-stroke: 2px #1f4037;
+  text-shadow: 0.1em 0.1em 0.2em #1d976c;
+  }
+  .boton {
+    margin-left: 11%;
+  }
+  button {
+    background: #8e9eab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+    color: black;
+    text-emphasis-color: black;
+    font-size: 145%;
+    filter: drop-shadow(0px 0px 10px black);
+  }
+  .card {
+    position: absolute;
+    width: 1270px;
+    height: 480px;
+    background: #FFFFFF;
+    border-radius: 120px;
+    opacity: 90%;
+    margin-top: -10%;
+    margin-left: 3%;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.5);
+  }
+.input-group{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.849);
+    width: 600px;
+    margin-left: 30%;
+    -webkit-text-stroke: 0.3px black;
+    color: transparent;
+}
+.input-group-text{
+    background: #8e9eab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-emphasis-color: black;
+    opacity: 95%;
+}

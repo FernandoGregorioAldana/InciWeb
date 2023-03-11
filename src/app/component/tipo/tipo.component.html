@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./tipo.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente 
+    logueado lo que permitira agregar su foto de perfil entre otros datos-->  
+    <div *ngIf="user$ | async as user">
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+
+        <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+        del tecnologico y del tec, asi como la foto de perfil del usuario y el icono en forma de casa-->  
+
+            <li><a routerLink="/inicio"><img class="vista1" src="assets/imagenes/casa.png"/></a></li>
+            <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil2.png'" alt="Perfil"/></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+    <!--titulo que va arriba del recuadro blanco que contiene los botones dentro-->
+      <div class="soli"> Tipo de Incidencía </div>
+      <div >
+        <form>
+
+          <!--aqui se realiza el recuadro blanco junto con una lista desplegable en su interior--> 
+
+          <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+          o estilo dentro del apatado llamado "component.css" que le corresponda-->   
+
+              <div class="card">
+                <div class="card-body">
+                    <div class="b1">
+                    <div class="boton">
+                      <!--Aqui se crean los botones que nos llevaran hacia la incidencia que se requiera realizar-->
+                      <a routerLink="/tarde"><button class="btn btn-outline-secondary" type="button" ><i class="fa-regular fa-clock"></i>&nbsp;Llegar Tarde</button></a>
+                      </div>  
+                    </div>
+                      <br>
+                      <br>
+                      <div class="b2">
+                        <div class="boton">
+                            <a routerLink="/medica"><button class="btn btn-outline-secondary" type="button"><i class="fa-regular fa-hospital"></i>&nbsp;Asistencia a Consulta Medica</button></a>
+                          </div>  
+                        </div> 
+                      <br>
+                      <br>
+                      <div class="b3">
+                        <div class="boton">
+                            <a routerLink="/antes"><button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-clock-rotate-left"></i>&nbsp;Retirarse antes de la hora</button></a>
+                          </div>  
+                        </div> 
+                      <br>
+                      <br>
+                      <div class="b4">
+                        <div class="boton">
+                            <a routerLink="/economico"><button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-money-bills"></i>&nbsp;Día Economico</button></a>
+                          </div>  
+                        </div>
+                      <br>
+                      <br>
+                      <div class="b5">
+                        <div class="boton">
+                            <a routerLink="/sueldo"><button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-ban"></i>&nbsp;Permiso sin goce de sueldo</button></a>
+                          </div>  
+                        </div>
+                      <br>
+                      <br>
+                      <div class="b6">
+                        <div class="boton">
+                          <a routerLink="/lactancia"><button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-person-breastfeeding"></i>&nbsp;Lactancía</button></a>
+                          </div>  
+                        </div>
+                      <br>
+                      <br>
+                      <div class="b7">
+                        <div class="boton">
+                          <a routerLink="/otro"><button class="btn btn-outline-secondary" type="button"><i class="fa-solid fa-arrows-spin"></i>&nbsp;Otro</button></a>
+                          </div>  
+                        </div>
+                      <br>
+                      <br>
+                </div>
+              </div> 
+          </form>
+      </div>
+      </div>
+  </body>
+</html>

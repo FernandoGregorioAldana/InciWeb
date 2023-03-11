@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./subdirec.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+  <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente logueado
+  lo que permitira agregar su foto de perfil entre otros datos-->  
+
+
+    <div *ngIf="user$ | async as user">
+    <header id="main-header">
+
+  <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+  del tecnologico y del tec, asi como la foto de perfil del usuario y el icono en forma de casa-->  
+      
+      <nav>
+      <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+      del tecnologico y del tec, asi como la foto de perfil del usuario y el icono en forma de casa--> 
+        <ul class="list-group list-group-horizontal-xl">
+          <li>
+            <a routerLink="/subdirec"
+              ><img class="vista1" src="assets/imagenes/casa.png"
+            /></a>
+          </li>
+            <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil.png'" alt="Perfil"/></li>
+          <li><img class="vista" src="assets/imagenes/edo.png" /></li>
+          <li><img class="vista2" src="assets/imagenes/tec.png" /></li>
+          <li><img class="vista3" src="assets/imagenes/TESCHi.png" /></li>
+        </ul>
+      </nav>
+    </header>
+    <!--Este es el nombre de la incidencia que se puede visualizar en la pantalla-->
+    <div class="soli">
+      Solicitud
+      <br />de Incidencía <br />
+    </div>
+
+    <div>
+    <!--Aqui se realiza todo el formulario que servira para que el servidor publico pueda realizar el
+	  llenado de su incidencia-->
+        
+    <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+	  o estilo dentro del apatado llamado "component.css" que le corresponda-->  
+      <form>
+        <div class="boton">
+        <!--el boton llamado "enviar" tiene un metodo que se mandara a llamar cuando se haga clic sobre el y ejecute las acciones
+        indicadas en el metodo que se encuentra en sueldo.component.ts-->
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fa-regular fa-paper-plane"></i>&nbsp;Enviar</button>
+        </div>
+        <div class="boton2">
+            <button class="btn btn-outline-danger" type="submit">
+              <i class="fa-solid fa-xmark"></i>&nbsp;Rechazar</button>
+          </div>
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <div class="folio">
+              <label>Folio:___</label>
+            </div>
+            <br>
+            <div class="area">
+                <label>Area Correspondiente: Ingeniería en Sistemas Computacionales</label>
+              </div>
+              <br>
+            <div class="fecha">
+                <label>Fecha: 25/01/2023</label>
+              </div>
+              <div class="tipo">
+                <label>Por este Conducto se notifica  que el trabajador esta autorizado a: Llegar Tarde</label>
+              </div>
+              <div class="nombre">
+                <label>Nombre del Trabajador: Jimenez Rangel Juana Patricia</label>
+              </div>
+              <div class="numero">
+                <label>Numero de Empleado: 2018452124</label>
+              </div>
+              <div class="dia">
+                <label>De las: 9:00 Horas, Hasta las 9:30 Horas, Del día: 29/01/2023</label>
+              </div>
+              <div class="firma">
+                <label>Firma del Jefe Inmediato</label>
+              </div>
+              <br>
+            <div class="input-group">
+              <label class="input-group-text"><i class="fa-regular fa-file"></i>&nbsp;Firma</label>
+              <input type="file" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </body>
+</html>
+

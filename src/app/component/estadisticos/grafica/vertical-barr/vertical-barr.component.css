@@ -1,0 +1,30 @@
+/*Dentro de este archivo se pueden dar estilo a las clases creadas en la estructura html, solo tienes que 
+mandarla a llamar y podras comenzar a cambiar colores, diseño, animaciones, etc.*/
+.card {
+    position: absolute;
+    width: 1300px;
+    height: 480px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    opacity: 90%;
+    margin-top: 10%;
+    margin-left: 6%;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0, 0.5);
+
+}
+
+.boton2 {
+    display: flex;
+    justify-content:right;
+    padding: 24%;
+  }
+
+  button {
+    background: #8e9eab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+    color: black;
+    text-emphasis-color: black;
+    font-size: 145%;
+    filter: drop-shadow(0px 0px );
+  }

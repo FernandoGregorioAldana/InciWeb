@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel</title>
+</head>
+<body>
+<div class="card">
+    <!--Le agregamos un id para poder mandarla a llamar en el component.ts
+    y asi realizar el acomode de la misma en un archivo excel-->
+    <table class="table table-bordered" id="excel">
+        <thead class="bg dark text-black">
+          <tr>
+            <!--Esta estructura servira para crear la tabla que se visualiza en pantalla
+            acomodando las columnas con el nombre que le corresponde-->
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Area</th>
+            <th scope="col">Tipo de Incidencia</th>
+            <th scope="col">Fecha de Incidencia</th>
+            <th scope="col">Fecha Solicitada</th>
+            <th scope="col">Fecha de Solicitud</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!--Esta estructura indica los datos que mandara a llamar de firebase-->
+          <tr *ngFor="let item of getData">
+            <th>{{item.nombre}}</th>
+            <td>{{item.apellido}}</td>
+            <td>{{item.area}}</td>
+            <td>{{item.tipoIncidencia}}</td>
+            <td>{{item.fecha}}</td>
+            <td>{{item.fechaSolicitada}}</td>
+            <td>{{item.fechaSolicitud}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--El boton tendra una funcion que se ejecutara al dar clic, la cual hara el proceso de conversión
+    de tabla a excel y procedera a descargarlo-->
+    <div class="boton">
+        <button (click)="exportexcel()" class="btn btn-outline-success" type="submit"><i class="fa-regular fa-circle-up"></i>&nbsp;Descargar Excel</button>
+      </div>
+      
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./inicio.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente logueado
+    lo que permitira agregar su foto de perfil entre otros datos-->  
+
+
+    <div *ngIf="user$ | async as user">
+    
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+            <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+            del tecnologico y del tec, asi como la foto de perfil del usuario-->  
+            <li><a routerLink="/perfil"><img class="vista1" [src]="user.image?? '/src/assets/perfil.png'" alt="Perfil"/></a></li>
+            <li><a routerLink="onbutton()"><img class="vista1" src="assets/imagenes/cerrarse.png"></a></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+        <!--titulo que va arriba del recuadro blanco que contiene los botones dentro--> 
+      <div class="soli"> Bienvenido </div>
+      <div >
+        <form >
+              <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+	            o estilo dentro del apatado llamado "component.css" que le corresponda--> 
+              
+              
+              <div class="card">
+                <div class="card-body">
+                    <div class="boton">
+                        <!--este boton te dirigira hacia la ruta que contiene los tipos de incidencias-->
+                        <a routerLink="/tipo"> <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-pen-to-square">
+                        </i>&nbsp;Generar Solicitud</button></a>
+                      </div>
+                      <div class="boton1">
+                        <!--este boton te dirigira hacia la ruta que contiene el historial de las inciden
+                        cias que ha realizado el usuario-->
+                       <a routerLink="/historial"><button class="btn btn-outline-success" type="submit"><i class="fa-regular fa-folder-open">
+                       </i> &nbsp;Historial de Solicitud</button></a>
+                      </div>
+                      <div class="boton2">
+                        <!--este boton te dirigira hacia la ruta que permite visualizar el estado en el que se
+                         encuentra la solicitud de incidencia realizada-->
+                        <a routerLink="/estatus"><button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-rotate">
+                        </i>&nbsp;Estatus de Solicitud</button></a>
+                      </div>
+                </div>
+              </div>
+          </form>
+      </div>
+    </div>
+  </body>
+</html>

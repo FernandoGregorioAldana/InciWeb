@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./iniciojc.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente logueado
+    lo que permitira agregar su foto de perfil entre otros datos-->  
+
+
+    <div *ngIf="user$ | async as user">
+    
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+        <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+        del tecnologico y del tec, asi como la foto de perfil del usuario--> 
+            <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil.png'" alt="Perfil"/></li>
+            <li><a routerLink="onbutton()"><img class="vista1" src="assets/imagenes/cerrarse.png"></a></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+      <!--titulo que va arriba del recuadro blanco que contiene los botones dentro--> 
+      <div class="soli"> Bienvenido al panel de los jefes de carrera</div>
+      <div >
+        <form >
+              <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+	            o estilo dentro del apatado llamado "component.css" que le corresponda--> 
+              <div class="card">
+                      <div class="container">
+                        <!--este boton te dirigira hacia la ruta donde te muestra las incidencias que se han
+                        realizado junto con un filtro para poder seleccionar por carrera y cada jefe pueda
+                        visualizar cuantas incidencias tiene-->
+                        <a routerLink="/aprobarjc"><button class=".btn" type="submit"><i class="fa-solid fa-rotate"></i>&nbsp;Verificar incidencias</button></a>
+                      </div>
+              </div>
+          </form>
+      </div> 
+      </div>  
+  </body>
+</html>

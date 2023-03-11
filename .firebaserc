@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dbpermisapp": {
+      "hosting": {
+        "InciWeb": [
+          "dbpermisapp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dbpermisapp"
+  }
+}

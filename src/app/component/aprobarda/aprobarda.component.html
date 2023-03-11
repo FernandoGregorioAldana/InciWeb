@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./aprobarda.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente logueado
+    lo que permitira agregar su foto de perfil entre otros datos-->  
+    <div *ngIf="user$ | async as user">
+    <header id="main-header">
+      <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+      del tecnologico y del tec, asi como la foto de perfil del usuario y el icono en forma de casa-->  
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+            <li><a routerLink="/Iniciojd"><img class="vista1" src="assets/imagenes/casa.png"/></a></li>
+            <!--aqui se manda a llamar la foto de perfil de usuario con "user.image"-->
+            <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil.png'" alt="Perfil"/></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+    <!--titulo que va arriba del recuadro blanco que contiene los botones dentro-->  
+      <div class="soli"> Incidencias recibidas para el director academico</div>
+      <div class="tablaInci">
+        <!--Filtro-->
+          <mat-form-field>
+              <mat-label>Filtro</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ing" #input>
+          </mat-form-field>
+           <!--Acorden de Valicacion de Incidencias-->
+           <div class="accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" 
+                aria-expanded="true" aria-controls="collapseOne">
+                  Validar Inciencia Seleccionada
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                   <!--Tabla de edicion-->
+                   <div class="contenido">
+                     <div class="nombre">
+                       <mat-form-field>
+                        <input matInput placeholder="Motivo de Rechazo" name="motRechazo" [(ngModel)]="this.inciser.selected.motRechazo">
+                       </mat-form-field>
+                     </div> 
+                     <div class="input-group">
+                            <label class="input-group-text"><i class="fa-regular fa-file"></i>&nbsp;Firma</label>
+                            <input type="file"  accept=".png, .jpg" (change)="SubirFoto($event)" name="firmaSB" 
+                            [(ngModel)]="this.inciser.selected.firmaSB"/>
+                          </div>
+                          <br>
+                             <button mat-flat-button (click)="guardaredit()">
+                              <i class="fa-solid fa-cloud-arrow-up"></i>
+                              &nbsp; Guardar 
+                             </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                     </div>
+                     <br>
+          <!--Tabla de Validaciones-->
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+              <!--Position actions-->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Validar</th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-flat-button (click)="editarInci(element)">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    &nbsp;Validar
+                  </button>
+                </td>
+              </ng-container>
+            
+              <!-- Position Column -->
+              <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef > Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+              </ng-container>
+
+               <!-- Weight Column -->
+               <ng-container matColumnDef="area">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Área </th>
+                <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="tipoIncidencia">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Incidencia </th>
+                <td mat-cell *matCellDef="let element"> {{element.tipoIncidencia}} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="fechaSolicitada">
+                <th mat-header-cell *matHeaderCellDef> Fecha Solicitada </th>
+                <td mat-cell *matCellDef="let element"> {{element.fechaSolicitada}} </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="fechaSolicitud">
+                <th mat-header-cell *matHeaderCellDef> Fecha Solicitud </th>
+                <td mat-cell *matCellDef="let element"> {{element.fechaSolicitud}} </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="firma">
+                <th mat-header-cell *matHeaderCellDef> Firma Servidor publico </th>
+                <td mat-cell *matCellDef="let element"> {{element.firma}} </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="firmaJI">
+                <th mat-header-cell *matHeaderCellDef> Firma Jefe Directo </th>
+                <td mat-cell *matCellDef="let element"> {{element.firmaJI}} </td>
+              </ng-container>
+               <!-- Symbol Column -->
+               <ng-container matColumnDef="firmaSB">
+                <th mat-header-cell *matHeaderCellDef> Firma Subdireccion </th>
+                <td mat-cell *matCellDef="let element"> {{element.firmaSB}} </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="motRechazo">
+                <th mat-header-cell *matHeaderCellDef> Rechazo de Incidencia </th>
+                <td mat-cell *matCellDef="let element"> {{element.motRechazo}} </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se pudo encontrar "{{input.value}}"</td>
+              </tr>
+            </table>
+            <br>
+            <br>
+      </div>
+    </div>
+</body>
+</html>

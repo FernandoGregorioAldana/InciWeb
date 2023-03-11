@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Registro De Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./registro.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <nav>
+      <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+      del tecnologico y del tec-->  
+
+        <ul class="list-group list-group-horizontal-xl">
+          <li>
+            <a routerLink="/registro"
+              ><img class="vista" src="assets/imagenes/edo.png"
+            /></a>
+          </li>
+          <li><img class="vista2" src="assets/imagenes/tec.png" /></li>
+          <li><img class="vista3" src="assets/imagenes/TESCHi.png" /></li>
+        </ul>
+      </nav>
+    </header>
+    <div>
+      <!--Aqui se crea la estructura del formario que podra llenar el usuario final-->
+
+      <!--Se manda a llamar el metodo creado para que al momento de registrar un usuario nuevo tambien guarde
+      los datos del usuario en firebase, asi como se manda a llamar el formulario creado para asignar a que 
+      casilla del formulario le corresponde el dato asignado dentro de la ventana de esta pagina
+      por ejemplo asignamos al input "Ingresa tu nombre" el dato.nombre y asi con las demas casillas que 
+      recibiran informacion a guardar del nuevo ususario-->
+
+      <!--el metodo se crea en registro.component.ts y este se ejecuta automaticamente cuando das clic en el 
+      boton "registrar"-->
+
+      <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+      o estilo dentro del apatado llamado "component.css" que le corresponda-->  
+      <form novalidate (ngSubmit)="registrar()" [formGroup]="formReg">
+        <div class="card">
+          <div class="card-body">
+            <br />
+            <div class="soli">
+              <label> Registro de nuevo Usuario</label>
+            </div>
+            <br />
+            <div class="subir">
+            <div class="form-floating">
+              <input [(ngModel)]="datos.nombre" type="text" class="form-control" placeholder="Ingresa tu Nombre" formControlName="nombre"/>
+              <label for="floatingPassword"><i class="fa-regular fa-circle-user"></i>&nbsp;Ingresa tu nombre</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.apellido" type="text" class="form-control" placeholder="Ingresa tus Apellidos" formControlName="apellidos"/>
+              <label for="floatingPassword"><i class="fa-regular fa-circle-user"></i>&nbsp;Ingresa tus Apellidos</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.rfc" type="text" class="form-control" placeholder="Ingresa tu RFC" formControlName="rfc"/>
+              <label for="floatingPassword"><i class="fa-regular fa-id-card"></i>&nbsp;Ingresa tu RFC</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <label for="floatingPassword"><i class="fa-regular fa-id-card"></i>&nbsp;Selecciona tu área</label>
+              <select [(ngModel)]="datos.area" class="form-select" formControlName="area">
+                <option selected>Seleccione su Área</option>
+                <option value="Ingeniería en Animación Digital y Efectos Visuales">Ingeniería en Animación Digital y Efectos Visuales</option>
+                <option value="Ingeniería en Sistemas computacionales">Ingeniería en Sistemas computacionales</option>
+                <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
+                <option value="Ingeniería Química">Ingeniería Química</option>
+                <option value="Licenciatura en Administración">Licenciatura en Administración</option>
+                <option value="Licenciatura en Gastronomía">Licenciatura en Gastronomía</option>
+              </select>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.noEmpleado" type="text" class="form-control" placeholder="Ingresa número de Trabajador" formControlName="empleado"/>
+              <label for="floatingPassword"><i class="fa-solid fa-clipboard-user"></i>&nbsp;Ingresa número de Trabajador</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.tel" type="text" class="form-control" placeholder="Ingresa número de Telefono" formControlName="telefono"/>
+              <label for="floatingPassword"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Ingresa número de Telefono</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.email" type="text" class="form-control" placeholder="Ingresa tu Correo" formControlName="email"/>
+              <label for="floatingPassword"><i class="fa-solid fa-at"></i>&nbsp;Ingresa tu Correo</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input [(ngModel)]="datos.password" type="password" class="form-control" placeholder="Contraseña" formControlName="password"/>
+              <label for="floatingPassword"><i class="fa-solid fa-key"></i>&nbsp;Contraseña</label>
+            </div>
+          </div>
+            <br />
+            <!--boton que acciona la fucnión funcion que se manda a llamar-->
+            <div class="boton">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-regular fa-circle-up"></i>&nbsp;Registrar</button>
+              </div>
+              <!--boton que redirige a la pagina de inicio de sesión-->
+              <div class="boton1">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a routerLink="/iniciosesion"> <button class="btn btn-outline-success" type="button"><i class="fa-solid fa-arrow-rotate-left"></i>&nbsp;Regresar</button></a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./historial.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl" *ngIf="user$ | async as user">
+            <li><a routerLink="/inicio"><img class="vista1" src="assets/imagenes/casa.png"/></a></li>
+            <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil2.png'"/></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+      <div class="soli"> Historial </div>
+      <div >
+        <form>
+              <div class="card">
+                <div class="card-body">
+                    
+                      <br>
+                      <br>
+                </div>
+              </div>
+              
+          </form>
+      </div>
+      
+  </body>
+</html>

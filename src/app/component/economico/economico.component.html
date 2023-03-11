@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./economico.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl" *ngIf="user$ | async as user">
+          <li><a routerLink="/tipo"><img class="vista1" src="assets/imagenes/casa.png"/></a>
+          </li>
+          <li><img class="vista1" [src]="user.image ?? '/src/assets/perfil2.png'" /></li>
+          <li><img class="vista" src="assets/imagenes/edo.png" /></li>
+          <li><img class="vista2" src="assets/imagenes/tec.png" /></li>
+          <li><img class="vista3" src="assets/imagenes/TESCHi.png" /></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="soli">
+      Solicitud
+      <br />de Incidencía <br />
+      por Día <br/>
+      Economico
+    </div>
+
+    <div>
+      <form [formGroup]="formEconomico" (ngSubmit)="CrearIncidencia()">
+        <!--Codigo del Boton-->
+        <div class="boton">
+          <button [disabled]="formEconomico.invalid" class="btn btn-outline-success" type="submit" >
+            <i class="fa-regular fa-paper-plane"></i>&nbsp;Enviar</button>
+        </div>
+        <!--Inicio del Card-->
+        <div class="card">
+          <div class="card-body">
+            <!--Tipo de Incidencia-->
+            <div class="incidencia">
+              <div class="col-md">
+                <div class="form-floating3">
+                  <label for="floatingSelectGrid" class="tamaño">El trabajador esta Aurotizado a: (Seleccione la opción)</label>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="tipoIncidencia">
+                    <option value="Día Economico">Día Economico</option>
+                  </select>
+                </div>
+              </div>
+            </div>  
+            <!--Codigo para area-->
+              <div class="col-md">
+                <div class="area">
+                <div class="form-floating3">
+                  <label for="floatingSelectGrid" class="tamaño"><i class="fa-solid fa-people-roof" 
+                    [class.green-icono]="this.formEconomico.get('area')?.valid"
+                    [class.red-icono]="this.formEconomico.get('area')?.invalid &&
+                    this.formEconomico.get('area')?.touched"></i>&nbsp;Área del Trabajador</label>
+                  <select class="form-select"  formControlName="area">
+                    <option selected>Seleccione su Área</option>
+                    <option value="Ingeniería en Animación Digital y Efectos Visuales">Ingeniería en Animación Digital y Efectos Visuales</option>
+                    <option value="Ingeniería en Sistemas computacionales">Ingeniería en Sistemas computacionales</option>
+                    <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                    <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
+                    <option value="Ingeniería Química">Ingeniería Química</option>
+                    <option value="Licenciatura en Administración">Licenciatura en Administración</option>
+                    <option value="Licenciatura en Gastronomía">Licenciatura en Gastronomía</option>  
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!--Folio de Incidencias-->
+            <div class="folio">
+              <label>Folio:___</label>
+            </div>
+             <!--Codigo para fechaSolicitud-->
+             <div class="form-floating">
+              <div class="solicitud">
+              <label for="floatingInput"class="tamaño">
+                <i class="fa-regular fa-calendar"
+                [class.green-icono]="this.formEconomico.get('fechaSolicitud')?.valid"
+                [class.red-icono]="this.formEconomico.get('fechaSolicitud')?.invalid &&
+                this.formEconomico.get('fechaSolicitud')?.touched"></i>&nbsp;Seleccione el dia de hoy:</label>
+              <input type="date" class="form-control" formControlName="fechaSolicitud" [min]="ahora"/>
+            </div>
+            </div>
+            <!--Codigo para nombre-->
+            <div class="form-floating1">
+              <div class="nom">
+              <label for="floatingInput" class="tamaño"><i class="fa-regular fa-circle-user" 
+                [class.green-icono]="this.formEconomico.get('nombre')?.valid" 
+                [class.red-icono]="this.formEconomico.get('nombre')?.invalid &&
+                this.formEconomico.get('nombre')?.touched"></i>&nbsp;Nombre del Trabajador: </label>
+              <input type="text" class="form-control" formControlName="nombre"/>
+            </div>
+            </div>            
+            <!--Codigo para apellido-->
+            <div class="form-floating1">
+              <div class="app">
+              <label for="floatingInput" class="tamaño"><i class="fa-regular fa-circle-user" 
+                [class.green-icono]="this.formEconomico.get('apellido')?.valid" 
+                [class.red-icono]="this.formEconomico.get('apellido')?.invalid &&
+                this.formEconomico.get('apellido')?.touched"></i>&nbsp;Apellidos del Trabajador: </label>
+              <input type="text" class="form-control" formControlName="apellido"/>
+            </div>
+            </div>
+            
+            <!--Codigo para noEmpleado-->
+            <div class="form-floating1">
+              <div class="num">
+              <label for="floatingInput" class="tamaño"><i class="fa-regular fa-address-card" 
+                [class.green-icono]="this.formEconomico.get('noEmpleado')?.valid" 
+                [class.red-icono]="this.formEconomico.get('noEmpleado')?.invalid &&
+                this.formEconomico.get('noEmpleado')?.touched"></i>&nbsp;Número del Trabajador: </label>
+              <input type="text" class="form-control" formControlName="noEmpleado" maxlength="6"/>
+            </div>
+            </div>
+            <!--Codigo para fechaSolicitada-->
+            <div class="form-floating">
+              <div class="dia">
+              <label for="floatingInput" class="tamaño">
+                <i class="fa-regular fa-calendar"
+                [class.green-icono]="this.formEconomico.get('fechaSolicitada')?.valid"
+                [class.red-icono]="this.formEconomico.get('fechaSolicitada')?.invalid &&
+                this.formEconomico.get('fechaSolicitada')?.touched"></i>&nbsp;Del día:</label>
+              <input type="date" class="form-control" formControlName="fechaSolicitada"/>
+            </div>
+            </div>
+            <!--Codigo para email-->
+            <div class="form-floating1">
+              <div class="email">
+              <label for="floatingInput" class="tamaño"><i class="fa-solid fa-at"
+                [class.green-icono]="this.formEconomico.get('email')?.valid" 
+                [class.red-icono]="this.formEconomico.get('email')?.invalid &&
+                this.formEconomico.get('email')?.touched"></i>&nbsp;Email del Trabajador: </label>
+              <input type="text" class="form-control" formControlName="email"/>
+            </div>
+            </div>
+          <!--Codigo para Jefeinmediato-->
+          <div class="col-md">
+            <div class="form-floating2">
+              <div class="jefe">
+              <label for="floatingSelectGrid" class="tamaño"><i class="fa-regular fa-building" 
+                [class.green-icono]="this.formEconomico.get('Jefeinmediato')?.valid"
+                [class.red-icono]="this.formEconomico.get('Jefeinmediato')?.invalid &&
+                this.formEconomico.get('Jefeinmediato')?.touched"></i>&nbsp;Jefe Inmediato del Trabajador</label>
+              <select class="form-select" formControlName="Jefeinmediato">
+                <option selected>Seleccione su Jefe Inmediato</option>
+                <option value="Víctor Ochoa Luna">Víctor Ochoa Luna</option>
+                <option value="Raúl Reyes Aquino">Raúl Reyes Aquino</option>
+                <option value="José Rene Bárcenas Ramírez">José Rene Bárcenas Ramírez</option>
+                <option value="Martha Amparo Soto Rodríguez">Martha Amparo Soto Rodríguez</option>
+                <option value="Abigaid Clara Juárez Matias">Abigaid Clara Juárez Matias</option>
+                <option value="Jorge Juárez Mata">Jorge Juárez Mata</option>
+                <option value="Pendiente">Pendiente</option>
+              </select>
+            </div>
+            </div>
+          </div>
+            <!--Codigo para firma-->
+            <br>
+            <br>
+            <br>
+            <div class="input-group">
+              <label class="input-group-text"><i class="fa-regular fa-file"></i>&nbsp;Firma</label>
+              <input type="file" class="form-control" accept=".png, .jpg" (change)="SubirFoto($event)" formControlName="firma"/>
+            </div>
+        </div>
+          </div>
+        </form>
+        </div>
+  </body>
+</html>

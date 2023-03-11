@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Perfil</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./perfil.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <!--"user$ | async as user" sirve para mandar a llamar los datos del usuario que esta actualmente logueado
+    lo que permitira mandar a llamar su foto de perfil entre otros datos-->  
+    <div *ngIf="user$ | async as user">
+      <div class="contenedor">
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+        <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+        del tecnologico y del tec y el icono en forma de casa-->  
+          <li><a routerLink="/inicio"><img class="vista1" src="assets/imagenes/casa.png"/></a></li>
+          <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+          <li><img class="vista2" src="assets/imagenes/tec.png" /></li>
+          <li><img class="vista3" src="assets/imagenes/TESCHi.png" /></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="main">
+      <!--en esta parte mandaremos a llamar al metodo que creamos en "perfil.component.ts" para poder 
+      ver los datos del usuario reflejados en la pantalla y poder agregar o hacer cambios de su perfil-->
+      <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="soli">
+              <!--en etse apartado se escribe -->
+              <label>Datos del Usuario</label>
+            </div>
+            <br />
+            <div class="subir">
+            <div class="form-floating">
+              <!--Aqui se agrega el "formControName" donde se asigna la variable creada en el formulario
+              que se localiza en "perfil.component.ts" por ejemplo mandamos a llamar "nombre" del form y lo asignamos
+              a la caja de texto que le corresponde, esto se hara con todas las casillas que se requieran-->
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Ingresa tu Nombre"/>
+              <label for="floatingPassword"><i class="fa-regular fa-circle-user"></i>&nbsp;Tu nombre es</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="apellido" class="form-control" placeholder="Ingresa tus Apellidos"/>
+              <label for="floatingPassword"><i class="fa-regular fa-circle-user"></i>&nbsp;Tus apellidos</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="rfc" class="form-control" placeholder="Ingresa tu RFC"/>
+              <label for="floatingPassword"><i class="fa-regular fa-id-card"></i>&nbsp;Tu RFC</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="area" class="form-control" placeholder="Area"/>
+              <label for="floatingPassword"><i class="fa-regular fa-id-card"></i>&nbsp;Tu area</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="noEmpleado" class="form-control" placeholder="Ingresa número de Trabajador"/>
+              <label for="floatingPassword"><i class="fa-solid fa-clipboard-user"></i>&nbsp;Tu número de Trabajador</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="tel" class="form-control" placeholder="Ingresa número de Telefono"/>
+              <label for="floatingPassword"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Tu número de Telefono</label>
+            </div>
+            <br />
+            <div class="form-floating">
+              <input type="text" formControlName="email" class="form-control" placeholder="Ingresa tu Correo"/>
+              <label for="floatingPassword"><i class="fa-solid fa-at"></i>&nbsp;Tu Correo</label>
+            </div>
+            <br />
+          </div>
+            <br />
+            <div class="boton">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-arrow-rotate-left"></i>&nbsp;Guardar</button>
+              </div>
+              <!-- en este bloque de codigo asignaremos un tamado para despues mandar a llamar la foto del
+              perfil del usuario, asi cuando suba una o la cambie pueda visualizar que se realizo de manera
+              correcta-->
+              <div class="profile-image">
+                <img
+                  width="320"
+                  height="220"
+                  class="margin-top mat-elevation-z1"
+                  [src]="user.image ?? '/src/assets/perfil2.png'"
+                />
+                </div>
+              <div class="boton1">
+                <div class="mat-mini-fab">
+                  <!--este boton tendra el metodo que servira para cambiar la foto de perfil-->
+                  <button (click)="inputField.click()" class="btn btn-outline-success" type="submit"><i class="fa-regular fa-image"></i>&nbsp;Subir Foto</button>
+
+                  <input #inputField hidden type="file" (change)="uploadFile($event, user)" />
+                  
+                  <!--asignamos lo que hara el boton llamado "guardar" el cual al hacerle clic ejecutara el metodo llamado
+                  "saveProfile" junto con sus pasos a realizar-->
+                  <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+                    </form>
+                </div>
+              </div>
+              </div>
+          </div>
+          </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>paginarh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./recuperar.component.css"
+    />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <nav>
+        <ul class="list-group list-group-horizontal-xl">
+
+            <!--Todo lo que se visualiza aqui es el encabezado de la pagina donde se muestra el logo del estado, 
+            del tecnologico y del tec y el icono en forma de casa-->  
+            <li><a routerLink="/iniciosesion"><img class="vista1" src="assets/imagenes/casa.png"/></a></li>
+            <li><img class="vista" src="assets/imagenes/edo.png"/></li>
+            <li><img class="vista2" src="assets/imagenes/tec.png"/></li>
+            <li><img class="vista3" src="assets/imagenes/TESCHi.png"/></li>
+
+        </ul>
+      </nav>
+      
+    </header>
+    <!--titulo que va arriba del recuadro blanco-->
+      <div class="soli">
+        Recuperar Contraseña
+      </div>
+
+      <div >
+        <form>
+            <div class="boton">
+                <!--Se manda a llamar el metodo creado para que al momento de dar clic en el boton
+                se ejecute el metodo-->
+
+                <!--el metodo se crea en recuperar.component.ts -->
+                <button class="btn btn-outline-success" type="submit" (click)="recuperar()"><i class="fa-regular fa-paper-plane"></i>&nbsp;Recuperar</button>
+              </div>
+              <!--aqui se realiza el recuadro blanco con la class "card"--> 
+
+              <!--el apartado "class" de cada div, label, select, etc. servira para poder agregarle un diseño
+              o estilo dentro del apatado llamado "component.css" que le corresponda-->   
+
+              
+              <div class="card">
+                <div class="card-body">
+                    <div class="form-floating">
+                      <!--Se indica que dentro de esta casilla de texto se obtendra el email que ingrese el
+                      usuario para que el metodo declarado lo obtenga y proceda a realizar la verificacion y 
+                      envio del correo electronico para recuperar la contraseña-->
+                        <input type="email" class="form-control" name="email" [(ngModel)]="email" required=""/>
+                        <label for="floatingPassword"><i class="fa-solid fa-at"></i>&nbsp;Ingresa tu Correo</label>
+                      </div>
+                </div>
+              </div>
+          </form>
+      </div>
+   </body>
+</html>
